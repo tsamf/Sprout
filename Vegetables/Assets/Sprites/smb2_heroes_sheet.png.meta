@@ -1,0 +1,514 @@
+fileFormatVersion: 2
+guid: b4e6c18038550444f9cc40d4331db01b
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: smb2_heroes_sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 215
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a761fdb63be86e469c6f3b51ce9bba0
+      internalID: 1627485916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smb2_heroes_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 215
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 152debc950220764a8b5bb011a9c8f49
+      internalID: -1292201685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smb2_heroes_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 215
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0b0bee85cb848f479196e787b3f4061
+      internalID: -1194652494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smb2_heroes_sheet_3
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 215
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8643eea9486d3342be96fb9d9361321
+      internalID: -611803631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smb2_heroes_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 215
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dda50fb0bb45f1d47ae8039c94cfd6a5
+      internalID: -1636217264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smb2_heroes_sheet_5
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 215
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ae57c7792c4f3a429ccf75b46f8085e
+      internalID: -2062352425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smb2_heroes_sheet_6
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 215
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9be5c2d3841145a4d97107e830c7e911
+      internalID: 1661753031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smb2_heroes_sheet_7
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 215
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bc04424f4e02584fad3f2ae7c03db83
+      internalID: 907508134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smb2_heroes_sheet_8
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 215
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec96f431fe19f034892822a3b160a529
+      internalID: 463934626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smb2_heroes_sheet_9
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 215
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e9443315d787b545abbc117cc95a9ef
+      internalID: 2103034511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smb2_heroes_sheet_10
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 215
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0082447ecfad07045bcce6f934e8ea42
+      internalID: -1851520538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smb2_heroes_sheet_11
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 215
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f49914cd98ce9b4b83f8ff75c13be83
+      internalID: -2053663469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smb2_heroes_sheet_12
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 215
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6dc4dbeb863c1f4a9df41c9ac31d67c
+      internalID: -462667319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      smb2_heroes_sheet_16: -874147915
+      smb2_heroes_sheet_64: 989347674
+      smb2_heroes_sheet_24: -1655920817
+      smb2_heroes_sheet_11: -2053663469
+      smb2_heroes_sheet_99: -2061964517
+      smb2_heroes_sheet_1: -1292201685
+      smb2_heroes_sheet_70: 2115417636
+      smb2_heroes_sheet_12: -462667319
+      smb2_heroes_sheet_46: -1996100687
+      smb2_heroes_sheet_65: 2096015027
+      smb2_heroes_sheet_23: 2075132108
+      smb2_heroes_sheet_26: 1726053431
+      smb2_heroes_sheet_97: -1524102714
+      smb2_heroes_sheet_17: 1169239148
+      smb2_heroes_sheet_54: 1821255437
+      smb2_heroes_sheet_2: -1194652494
+      smb2_heroes_sheet_61: 1334827933
+      smb2_heroes_sheet_98: 1036445638
+      smb2_heroes_sheet_92: -2099683774
+      smb2_heroes_sheet_37: -1950813280
+      smb2_heroes_sheet_3: -611803631
+      smb2_heroes_sheet_34: -1171105967
+      smb2_heroes_sheet_47: 2025690307
+      smb2_heroes_sheet_49: -1109954801
+      smb2_heroes_sheet_91: 408673195
+      smb2_heroes_sheet_19: -556395488
+      smb2_heroes_sheet_60: -1195972346
+      smb2_heroes_sheet_96: -875986601
+      smb2_heroes_sheet_4: -1636217264
+      smb2_heroes_sheet_57: 596991133
+      smb2_heroes_sheet_6: 1661753031
+      smb2_heroes_sheet_83: -433260022
+      smb2_heroes_sheet_42: -303188849
+      smb2_heroes_sheet_38: -267427182
+      smb2_heroes_sheet_14: 13701743
+      smb2_heroes_sheet_93: 1384047636
+      smb2_heroes_sheet_20: -1314852840
+      smb2_heroes_sheet_90: -1910367345
+      smb2_heroes_sheet_18: 214872063
+      smb2_heroes_sheet_33: -2029133808
+      smb2_heroes_sheet_13: 2127354341
+      smb2_heroes_sheet_52: -12878442
+      smb2_heroes_sheet_79: 649773485
+      smb2_heroes_sheet_104: 1835096248
+      smb2_heroes_sheet_29: 218557104
+      smb2_heroes_sheet_51: 1451787359
+      smb2_heroes_sheet_81: -1642134550
+      smb2_heroes_sheet_10: -1851520538
+      smb2_heroes_sheet_30: 320976239
+      smb2_heroes_sheet_76: 312289783
+      smb2_heroes_sheet_32: -1512322215
+      smb2_heroes_sheet_9: 2103034511
+      smb2_heroes_sheet_55: 841599379
+      smb2_heroes_sheet_88: 1103720466
+      smb2_heroes_sheet_50: 787990749
+      smb2_heroes_sheet_39: -230064697
+      smb2_heroes_sheet_15: -563157000
+      smb2_heroes_sheet_56: 660479715
+      smb2_heroes_sheet_27: -824113435
+      smb2_heroes_sheet_89: 1443390959
+      smb2_heroes_sheet_73: -1992081342
+      smb2_heroes_sheet_41: 1638854576
+      smb2_heroes_sheet_85: -665226804
+      smb2_heroes_sheet_48: 879185613
+      smb2_heroes_sheet_40: -1483513522
+      smb2_heroes_sheet_71: 1490242299
+      smb2_heroes_sheet_53: -985557713
+      smb2_heroes_sheet_75: -1591720251
+      smb2_heroes_sheet_7: 907508134
+      smb2_heroes_sheet_31: -1673724957
+      smb2_heroes_sheet_87: -766050753
+      smb2_heroes_sheet_25: -124010533
+      smb2_heroes_sheet_86: -2002728800
+      smb2_heroes_sheet_102: 2132059862
+      smb2_heroes_sheet_8: 463934626
+      smb2_heroes_sheet_0: 1627485916
+      smb2_heroes_sheet_58: -1048206353
+      smb2_heroes_sheet_69: -1113315805
+      smb2_heroes_sheet_66: 1938160136
+      smb2_heroes_sheet_59: 209420221
+      smb2_heroes_sheet_80: 384033062
+      smb2_heroes_sheet_5: -2062352425
+      smb2_heroes_sheet_62: 833780165
+      smb2_heroes_sheet_68: -1770011745
+      smb2_heroes_sheet_67: -2071405387
+      smb2_heroes_sheet_95: 763014655
+      smb2_heroes_sheet_63: -959779246
+      smb2_heroes_sheet_103: 1826701929
+      smb2_heroes_sheet_94: -1228755803
+      smb2_heroes_sheet_100: -1351754682
+      smb2_heroes_sheet_74: -1625954183
+      smb2_heroes_sheet_78: -1779061694
+      smb2_heroes_sheet_101: 1055530759
+      smb2_heroes_sheet_72: 2101701684
+      smb2_heroes_sheet_82: -1911614297
+      smb2_heroes_sheet_105: 1480191514
+      smb2_heroes_sheet_77: -888906670
+      smb2_heroes_sheet_45: 643169200
+      smb2_heroes_sheet_84: 304889257
+      smb2_heroes_sheet_36: 2055942492
+      smb2_heroes_sheet_44: 44907428
+      smb2_heroes_sheet_28: 2011889758
+      smb2_heroes_sheet_35: 1152096884
+      smb2_heroes_sheet_22: 1438443071
+      smb2_heroes_sheet_21: -2012181924
+      smb2_heroes_sheet_43: 336768241
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

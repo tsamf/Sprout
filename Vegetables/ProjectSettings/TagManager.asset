@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags: []
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Platforms
+  - Background
+  - Player
+  - Ladders
+  - Vegetables
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3147054441
+    locked: 0
+  - name: Platform
+    uniqueID: 2717192871
+    locked: 0
+  - name: Ladders
+    uniqueID: 863564683
+    locked: 0
+  - name: Player
+    uniqueID: 3292364597
+    locked: 0
+  - name: Vegetables
+    uniqueID: 23378805
+    locked: 0
