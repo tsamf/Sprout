@@ -24,12 +24,21 @@ public class PlayerMovement : MonoBehaviour
     private Animator myAnimator;
     private BoxCollider2D myBoxCollider2D;
     private CapsuleCollider2D myCapsuleCollider2D;
+    private AudioManager audioManager;
 
 
     private bool isClimbing = false;
     private bool isPicking = false;
 
+    public static event Action OnPick;
 
+    private void OnEnable() {
+        OnPick+= pickVegetable;
+    }
+
+    private void OnDisable() {
+        OnPick-=pickVegetable;
+    }
 
     void Awake()
     {
@@ -38,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         myBoxCollider2D = GetComponent<BoxCollider2D>();
         myCapsuleCollider2D = GetComponent<CapsuleCollider2D>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     void Start()
@@ -60,12 +70,19 @@ public class PlayerMovement : MonoBehaviour
         {
             if (moveInput.y < 0 && !isPicking)
             {
-                myAnimator.SetTrigger("isPicking");
-                isPicking = true;
-                StartCoroutine(resetPicking());
+               OnPick?.Invoke();
             }
         }
     }
+
+    private void pickVegetable()
+    {
+        myAnimator.SetTrigger("isPicking");
+        audioManager.PlayPlayerPickSFX();
+        isPicking = true;
+        StartCoroutine(resetPicking());
+    }
+
 
     IEnumerator resetPicking()
     {
@@ -154,12 +171,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnMove(InputValue value)
     {
-        if (PauseControl.isPaused) { return; }
         moveInput = value.Get<Vector2>();
     }
 
     private void OnJump(InputValue value)
     {
+        //If the game is paused don't do anything
         if (PauseControl.isPaused) { return; }
 
         //If the player is not on the ground don't jump        
@@ -169,6 +186,7 @@ public class PlayerMovement : MonoBehaviour
         {
             myRigidbody2D.velocity += new Vector2(0, jumpSpeed);
             myAnimator.SetBool("isJumping", true);
+            audioManager.PlayPlayerJumpSFX();
         }
     }
 

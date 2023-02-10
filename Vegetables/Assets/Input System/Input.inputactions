@@ -1,5 +1,5 @@
 {
-    "name": "Player",
+    "name": "Input",
     "maps": [
         {
             "name": "Player",
@@ -33,18 +33,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Pause",
+                    "name": "Jump",
                     "type": "Button",
-                    "id": "5a7e1cb1-8808-4b55-b881-b535c53f9282",
+                    "id": "45eb23a4-dcb5-4f43-8cad-cde9aeaffd72",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Jump",
+                    "name": "Pause",
                     "type": "Button",
-                    "id": "45eb23a4-dcb5-4f43-8cad-cde9aeaffd72",
+                    "id": "ff0dff1b-20fa-457f-93c3-9fbdf3b5ac74",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -274,23 +274,23 @@
                 },
                 {
                     "name": "",
-                    "id": "98eb893b-6023-4789-bd96-955aa7ee7d59",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "7334e0a3-cc58-4551-a3b5-539b99d063e6",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f957c630-297b-4818-8469-5cb3543acfa4",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
