@@ -6,7 +6,7 @@ using UnityEngine;
 public class VegetableSO : ScriptableObject
 {
 
-    [SerializeField] float amount = 5f;
+    [SerializeField] int amount = 5;
     [SerializeField] Sprite vegetableSprite;
 
     public Sprite GetVegetableSprite()
@@ -14,7 +14,7 @@ public class VegetableSO : ScriptableObject
         return vegetableSprite;
     }
 
-    public float GetAmount()
+    public int GetAmount()
     {
         return amount;
     }

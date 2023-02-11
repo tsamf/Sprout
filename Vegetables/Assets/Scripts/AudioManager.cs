@@ -12,10 +12,19 @@ public class AudioManager : MonoBehaviour
     [Header("Player")]
     [SerializeField] AudioClip playerJumpSFX;
     [SerializeField][Range(0,1)] float playerJumpVolume = 1f;
+
     [SerializeField] AudioClip playerPickSFX;
     [SerializeField][Range(0,1)] float playerPickVolume = 1f;
+
+    [SerializeField] AudioClip playerThrowSFX;
+    [SerializeField][Range(0,1)] float playerThrowVolume = 1f;
+
+    [SerializeField]AudioClip playerThrowEmptySFX;
+    [SerializeField][Range(0,1)] float playerThrowEmptyVolume = 1f; 
+
     [SerializeField] AudioClip playerDeathSFX;
     [SerializeField][Range(0,1)] float playerDeathVolume = 1f;
+
 
     private static GameObject instance = null;
 
@@ -53,9 +62,19 @@ public class AudioManager : MonoBehaviour
         PlaySFXAtPoint(playerPickSFX,playerPickVolume);
     }
 
-    public void PlayerPlayerDeathSFX()
+    public void PlayPlayerDeathSFX()
     {
         PlaySFXAtPoint(playerDeathSFX, playerDeathVolume);
+    }
+
+    public void PlayPlayerThrowSFX()
+    {
+        PlaySFXAtPoint(playerThrowSFX, playerThrowVolume);
+    }
+    
+    public void PlayplayerThrowEmptySFX()
+    {
+        PlaySFXAtPoint(playerThrowEmptySFX,playerThrowEmptyVolume); 
     }
 
     void PlaySFXAtPoint(AudioClip clip,float clipVolume)

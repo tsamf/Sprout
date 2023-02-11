@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    
+    [SerializeField] int playerVegetableCount = 0;
+    [SerializeField] TextMeshProUGUI vegetableText; 
+    [SerializeField] float countSpeed= .01f;
+    
     private static GameObject instance = null;
     
     private void Awake()
@@ -25,6 +31,43 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public int GetVegetableAmount()
+    {
+        return playerVegetableCount;
+    }
+
+    public void RemoveVegetables(int amount)
+    {
+        StartCoroutine(DecrementVegetables(amount));
+    }
+
+    IEnumerator DecrementVegetables(int count)
+    {
+        for(int i =0; i < count; i++)
+        {
+            playerVegetableCount--;
+            vegetableText.text = "Vegetables:" + playerVegetableCount.ToString();
+            yield return new WaitForSeconds(countSpeed);
+        }
+    }
+
+    public void AddVegetables(int amount)
+    {
+        StartCoroutine(incermentVegetables(amount));
+    }
+
+    IEnumerator incermentVegetables(int count)
+    {
+        for(int i =0; i < count; i++)
+        {
+            playerVegetableCount++;
+            vegetableText.text = "Vegetables:" + playerVegetableCount.ToString();
+            yield return new WaitForSeconds(countSpeed);
+        }
+    }
+
+
 
     public void LoadNextLevel()
     {

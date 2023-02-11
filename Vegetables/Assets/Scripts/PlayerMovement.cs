@@ -16,6 +16,13 @@ public class PlayerMovement : MonoBehaviour
     [Header("Timers")]
     [SerializeField] float deathTimer = 1f;
     [SerializeField] float pickingTimer = .5f;
+    [SerializeField] float throwCooldownTimer = .1f;
+
+    [Header("Projectiles")]
+    [SerializeField] Transform thrownVegetablePrefab;
+    [SerializeField] Vector2 throwSpeed = new Vector2(2, 2);
+    [SerializeField] float thrownSpawnPointOffest = 0f;
+    [SerializeField] float destroyThrownAfterTime = 2f;
 
     private Rigidbody2D myRigidbody2D;
     private float myGravityScaleAtStart;
@@ -25,19 +32,23 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D myBoxCollider2D;
     private CapsuleCollider2D myCapsuleCollider2D;
     private AudioManager audioManager;
+    private GameManager gameManager;
 
 
     private bool isClimbing = false;
     private bool isPicking = false;
+    private bool isThrowing = false;
 
     public static event Action OnPick;
 
-    private void OnEnable() {
-        OnPick+= pickVegetable;
+    private void OnEnable()
+    {
+        OnPick += pickVegetable;
     }
 
-    private void OnDisable() {
-        OnPick-=pickVegetable;
+    private void OnDisable()
+    {
+        OnPick -= pickVegetable;
     }
 
     void Awake()
@@ -48,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
         myBoxCollider2D = GetComponent<BoxCollider2D>();
         myCapsuleCollider2D = GetComponent<CapsuleCollider2D>();
         audioManager = FindObjectOfType<AudioManager>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     void Start()
@@ -70,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (moveInput.y < 0 && !isPicking)
             {
-               OnPick?.Invoke();
+                OnPick?.Invoke();
             }
         }
     }
@@ -103,15 +115,15 @@ public class PlayerMovement : MonoBehaviour
             //Turn off climbing animation
             myAnimator.SetBool("isClimbing", false);
 
-            if(!myBoxCollider2D.IsTouchingLayers(LayerMask.GetMask("Platforms")))
+            if (!myBoxCollider2D.IsTouchingLayers(LayerMask.GetMask("Platforms")))
             {
                 //If the player isnt on the ground turn on jumping animation
                 myAnimator.SetBool("isJumping", true);
-            }    
+            }
         }
-        
+
         //Near a ladder
-        if(myCapsuleCollider2D.IsTouchingLayers(LayerMask.GetMask("Ladders")))
+        if (myCapsuleCollider2D.IsTouchingLayers(LayerMask.GetMask("Ladders")))
         {
             //If the player pushes up while touching a ladder climbing should start
             if (moveInput.y > 0)
@@ -134,7 +146,7 @@ public class PlayerMovement : MonoBehaviour
                 }
                 else
                 {
-                    if(moveInput.y <0)
+                    if (moveInput.y < 0)
                     {
                         isClimbing = false;
                         myRigidbody2D.gravityScale = myGravityScaleAtStart;
@@ -172,6 +184,46 @@ public class PlayerMovement : MonoBehaviour
     private void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
+    }
+
+    private void OnFire(InputValue value)
+    {
+        //If the game is paused don't do anything
+        if (PauseControl.isPaused) { return; }
+        //Do not do anything if the player is on the ladder
+        if(isClimbing) {return;}
+
+        if (value.isPressed && !isThrowing)
+        {
+            myAnimator.SetTrigger("isThrowing");
+            isThrowing = true;
+            StartCoroutine(throwCooldown());
+
+            //The player doesnt have vegetables
+            if (gameManager.GetVegetableAmount() <= 0)
+            {
+                audioManager.PlayplayerThrowEmptySFX();
+            }
+            //The player has Vegetables
+            else
+            {
+                audioManager.PlayPlayerThrowSFX();
+                gameManager.RemoveVegetables(1);
+
+                //Spawn a vegitable and throw it
+                Vector3 vegetableSpawnPoint = transform.position + Vector3.up * thrownSpawnPointOffest;
+                Transform weapon = Instantiate(thrownVegetablePrefab, vegetableSpawnPoint, Quaternion.identity);
+                Vector2 throwDistance = new Vector2(-transform.localScale.x * (Mathf.Abs(myRigidbody2D.velocity.x) + throwSpeed.x), myRigidbody2D.velocity.y + throwSpeed.y);
+                weapon.GetComponent<Rigidbody2D>().velocity = throwDistance;
+                Destroy(weapon.gameObject, destroyThrownAfterTime);
+            }
+        }
+    }
+
+    IEnumerator throwCooldown()
+    {
+        yield return new WaitForSeconds(throwCooldownTimer);
+        isThrowing = false;
     }
 
     private void OnJump(InputValue value)
