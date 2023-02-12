@@ -741,6 +741,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac233319db17f74fb461aeb0f12e90a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerVegetableCount: 0
+  playerScore: 0
+  vegetableText: {fileID: 0}
+  scoreText: {fileID: 0}
+  countSpeed: 0.01
+  pauseMenu: {fileID: 0}
 --- !u!4 &1585122856
 Transform:
   m_ObjectHideFlags: 0

@@ -8,9 +8,12 @@ public class GameManager : MonoBehaviour
 {
     
     [SerializeField] int playerVegetableCount = 0;
+    [SerializeField] int playerScore = 0;
     [SerializeField] TextMeshProUGUI vegetableText; 
+    [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] float countSpeed= .01f;
-    
+    [SerializeField] Canvas pauseMenu;
+
     private static GameObject instance = null;
     
     private void Awake()
@@ -42,9 +45,9 @@ public class GameManager : MonoBehaviour
         StartCoroutine(DecrementVegetables(amount));
     }
 
-    IEnumerator DecrementVegetables(int count)
+    IEnumerator DecrementVegetables(int amount)
     {
-        for(int i =0; i < count; i++)
+        for(int i =0; i < amount; i++)
         {
             //The player cant have a negative amount of vegetables
             if(playerVegetableCount > 0)
@@ -58,15 +61,30 @@ public class GameManager : MonoBehaviour
 
     public void AddVegetables(int amount)
     {
-        StartCoroutine(incermentVegetables(amount));
+        StartCoroutine(IncermentVegetables(amount));
     }
 
-    IEnumerator incermentVegetables(int count)
+    IEnumerator IncermentVegetables(int amount)
     {
-        for(int i =0; i < count; i++)
+        for(int i =0; i < amount; i++)
         {
             playerVegetableCount++;
             vegetableText.text = "Vegetables:" + playerVegetableCount.ToString();
+            yield return new WaitForSeconds(countSpeed);
+        }
+    }
+
+    public void AddPoints(int amount)
+    {
+       StartCoroutine(IncrementPoints(amount));
+    }
+
+    IEnumerator IncrementPoints(int amount)
+    {
+        for(int i =0; i < amount; i++)
+        {
+            playerScore++;
+            scoreText.text = "Score:" + playerScore.ToString();
             yield return new WaitForSeconds(countSpeed);
         }
     }
@@ -74,6 +92,11 @@ public class GameManager : MonoBehaviour
     public void LoadNextLevel()
     {
        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void ExitGame()
@@ -84,4 +107,5 @@ public class GameManager : MonoBehaviour
 
         Application.Quit();
     }
+
 }

@@ -46,7 +46,8 @@ public class PlayerHit : MonoBehaviour
 
     private void CheckForHit()
     {
-        if (myCapsuleCollider2D.IsTouchingLayers(LayerMask.GetMask("Obstacles")))
+        if (myCapsuleCollider2D.IsTouchingLayers(LayerMask.GetMask("Obstacles")) ||
+            myCapsuleCollider2D.IsTouchingLayers(LayerMask.GetMask("Enemy")))
         {
             ProcessHit();
         }

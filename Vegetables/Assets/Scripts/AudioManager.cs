@@ -25,6 +25,13 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip playerHitSFX;
     [SerializeField][Range(0,1)] float playerHitVolume = 1f;
 
+    [Header("Slime")]
+    [SerializeField] AudioClip slimeHitSFX;
+    [SerializeField][Range(0,1)] float slimeHitVolume = 1f;
+
+    [SerializeField] AudioClip slimeDeathSFX;
+    [SerializeField][Range(0,1)] float slimeDeathVolume = 1f;
+
 
     private static GameObject instance = null;
 
@@ -75,6 +82,16 @@ public class AudioManager : MonoBehaviour
     public void PlayplayerThrowEmptySFX()
     {
         PlaySFXAtPoint(playerThrowEmptySFX,playerThrowEmptyVolume); 
+    }
+
+    public void PlaySlimeHitSFX()
+    {
+         PlaySFXAtPoint(slimeHitSFX, slimeHitVolume);
+    }
+
+     public void PlaySlimeDeathSFX()
+    {
+         PlaySFXAtPoint(slimeDeathSFX, slimeDeathVolume);
     }
 
     void PlaySFXAtPoint(AudioClip clip,float clipVolume)

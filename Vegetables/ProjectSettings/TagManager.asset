@@ -16,10 +16,10 @@ TagManager:
   - Background
   - Player
   - Ladders
-  - Vegetables
+  - PickVegetable
   - Obstacles
-  - 
-  - 
+  - Enemy
+  - ThrowVegetable
   - 
   - 
   - 
@@ -50,6 +50,9 @@ TagManager:
     locked: 0
   - name: Ladders
     uniqueID: 863564683
+    locked: 0
+  - name: Enemy
+    uniqueID: 1145468855
     locked: 0
   - name: Player
     uniqueID: 3292364597

@@ -26,7 +26,7 @@ public class PauseControl : MonoBehaviour
         }
     }
 
-    private void TogglePause()
+    public void TogglePause()
     {
         if (Time.timeScale > 0)
         {

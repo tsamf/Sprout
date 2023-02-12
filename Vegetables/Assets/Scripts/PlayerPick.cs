@@ -42,7 +42,7 @@ public class PlayerPick : MonoBehaviour
 
     private void CheckForPick()
     {
-        if (capsuleCollider2D.IsTouchingLayers(LayerMask.GetMask("Vegetables")))
+        if (capsuleCollider2D.IsTouchingLayers(LayerMask.GetMask("PickVegetable")))
         {
             if (moveInput.y < 0 && !isPicking)
             {
