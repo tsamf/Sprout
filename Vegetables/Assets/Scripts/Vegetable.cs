@@ -18,18 +18,17 @@ public class Vegetable : MonoBehaviour
     private BoxCollider2D myBoxCollider2D;
     private SpriteRenderer spriteRenderer;
     private GameManager gameManager;
+
     private bool gettingPicked = false;
     private bool isPicked = false;
 
-
-
     private void OnEnable()
     {
-        PlayerMovement.OnPick += IGotPicked;
+        PlayerPick.OnPick += StartPick;
     }
     private void OnDisable()
     {
-        PlayerMovement.OnPick -= IGotPicked;
+        PlayerPick.OnPick -= StartPick;
     }
 
     private void Awake()
@@ -52,17 +51,18 @@ public class Vegetable : MonoBehaviour
             //Max distance to move between updates
             float maxDistance = pickSpeed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, calculatedPickDestination, maxDistance);
+        }
 
-            if (transform.position == calculatedPickDestination && !isPicked)
-            {
-                isPicked = true;
-                spriteRenderer.enabled = false;
-                StartCoroutine(displayCollectedText());
-            }
+        //Once the Vegetable has reached its destination mark as picked and display Collection text
+        if (transform.position == calculatedPickDestination && !isPicked)
+        {
+            isPicked = true;
+            spriteRenderer.enabled = false;
+            StartCoroutine(displayPickedText());
         }
     }
 
-    IEnumerator displayCollectedText()
+    IEnumerator displayPickedText()
     {
         gameManager.AddVegetables(vegetableInfo.GetAmount());
         vegetableCountText.text = "+" + vegetableInfo.GetAmount().ToString();
@@ -71,7 +71,7 @@ public class Vegetable : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void IGotPicked()
+    private void StartPick()
     {
         if (myBoxCollider2D.IsTouchingLayers(LayerMask.GetMask("Player")))
         {

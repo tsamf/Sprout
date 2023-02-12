@@ -46,8 +46,12 @@ public class GameManager : MonoBehaviour
     {
         for(int i =0; i < count; i++)
         {
-            playerVegetableCount--;
-            vegetableText.text = "Vegetables:" + playerVegetableCount.ToString();
+            //The player cant have a negative amount of vegetables
+            if(playerVegetableCount > 0)
+            {
+                playerVegetableCount--;
+                vegetableText.text = "Vegetables:" + playerVegetableCount.ToString();
+            }
             yield return new WaitForSeconds(countSpeed);
         }
     }
@@ -66,9 +70,7 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(countSpeed);
         }
     }
-
-
-
+    
     public void LoadNextLevel()
     {
        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

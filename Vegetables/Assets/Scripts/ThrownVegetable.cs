@@ -13,16 +13,9 @@ public class ThrownVegetable : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         int spriteIndex = Random.Range(0, possibleVegetableSprites.Count);
         spriteRenderer.sprite= possibleVegetableSprites[spriteIndex];
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
