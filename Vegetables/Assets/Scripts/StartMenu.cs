@@ -11,16 +11,24 @@ public class StartMenu : MonoBehaviour
     [SerializeField] Button exitButton;
 
     GameManager gameManager;
+    GameObject settingsMenu;
 
     private void Awake() {
         gameManager = FindObjectOfType<GameManager>();  
+        settingsMenu = FindObjectOfType<SettingsMenu>(true).gameObject;
     }
 
     void Start()
     {
         startButton.onClick.AddListener(gameManager.LoadNextLevel);
-        //settingsButton.onClick.AddListener();
+        settingsButton.onClick.AddListener(OpenSettingsMenu);
         //creditsButton.onClick.AddListener();
         exitButton.onClick.AddListener(gameManager.ExitGame);
     }
+
+    void OpenSettingsMenu()
+    {
+        settingsMenu.SetActive(true);
+        gameObject.SetActive(false);
+    }    
 }

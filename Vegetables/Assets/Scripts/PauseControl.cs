@@ -8,6 +8,7 @@ public class PauseControl : MonoBehaviour
 {
     
     private GameObject pauseMenu;
+    private GameObject settingsMenu; 
     
     private float previousTimeScale = 1.0f;
     public static bool isPaused = false;
@@ -16,6 +17,7 @@ public class PauseControl : MonoBehaviour
     private void Awake()
     {
         pauseMenu = FindObjectOfType<PauseMenu>(true).gameObject;
+        settingsMenu = FindObjectOfType<SettingsMenu>(true).gameObject;
     }
 
     private void OnPause(InputValue value)
@@ -41,7 +43,8 @@ public class PauseControl : MonoBehaviour
             Time.timeScale = previousTimeScale;
             AudioListener.pause = false;
             isPaused = false;
-            pauseMenu.SetActive(false); 
+            pauseMenu.SetActive(false);
+            settingsMenu.SetActive(false);
         }
     }
 }

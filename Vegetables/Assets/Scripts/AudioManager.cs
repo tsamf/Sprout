@@ -5,12 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
-
-
     [Header("Mixer")]
     [SerializeField][Range(0, 1)] float masterVolume = 1.0f;
     [SerializeField][Range(0, 1)] float musicVolume = 1.0f;
-    [SerializeField][Range(0, 1)] float SFXVolume = 1.0f;
+    [SerializeField][Range(0, 1)] float sFXVolume = 1.0f;
     [SerializeField] AudioSource audioSource;
 
     [Header("Music")]
@@ -46,11 +44,13 @@ public class AudioManager : MonoBehaviour
 
     private static GameObject instance = null;
 
-    private void OnEnable() {
+    private void OnEnable()
+    {
         GameManager.OnSceneChange += UpdateThemeOnSceneChange;
     }
 
-    private void OnDisable() {
+    private void OnDisable()
+    {
         GameManager.OnSceneChange -= UpdateThemeOnSceneChange;
     }
 
@@ -116,7 +116,7 @@ public class AudioManager : MonoBehaviour
 
     void PlaySFXAtPoint(AudioClip clip, float clipVolume)
     {
-        float playVolume = clipVolume * SFXVolume * masterVolume;
+        float playVolume = clipVolume * sFXVolume * masterVolume;
         AudioSource.PlayClipAtPoint(clip, Camera.main.transform.position, playVolume);
     }
 
@@ -127,18 +127,43 @@ public class AudioManager : MonoBehaviour
         switch (sceneIndex)
         {
             case "TitleScreen":
-            audioSource.clip = mainMenuTheme;
-            audioSource.volume = mainMenuThemeVolume * musicVolume * masterVolume; 
+                audioSource.clip = mainMenuTheme;
+                audioSource.volume = mainMenuThemeVolume * musicVolume * masterVolume;
                 break;
             case "GameOverScreen":
-            audioSource.clip = mainMenuTheme;
-            audioSource.volume = mainMenuThemeVolume * musicVolume * masterVolume; 
+                audioSource.clip = mainMenuTheme;
+                audioSource.volume = mainMenuThemeVolume * musicVolume * masterVolume;
                 break;
             default:
-            audioSource.clip = levelTheme;
-            audioSource.volume = levelThemeVolume * musicVolume * masterVolume; 
+                audioSource.clip = levelTheme;
+                audioSource.volume = levelThemeVolume * musicVolume * masterVolume;
                 break;
         }
-         audioSource.Play();
+        audioSource.Play();
+    }
+
+    public float MasterVolume
+    {
+        get => masterVolume;
+        set
+        {
+            masterVolume = value;
+            audioSource.volume = masterVolume * musicVolume;
+        }
+    }
+    public float MusicVolume 
+    { 
+        get => musicVolume; 
+        set
+        {
+            musicVolume = value;
+            audioSource.volume = masterVolume * musicVolume; 
+        } 
+    }
+
+    public float SFXVolume 
+    { 
+        get => sFXVolume; 
+        set => sFXVolume = value; 
     }
 }

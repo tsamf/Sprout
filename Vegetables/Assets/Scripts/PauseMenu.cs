@@ -13,16 +13,21 @@ public class PauseMenu : MonoBehaviour
 
     GameManager gameManager;
     PauseControl pauseControl;
+    GameObject settingsMenu;
 
     private void Awake() {
         gameManager = FindObjectOfType<GameManager>();
         pauseControl = FindObjectOfType<PauseControl>();    
     }
 
+    private void OnEnable(){
+        settingsMenu = FindObjectOfType<SettingsMenu>(true).gameObject; 
+    }
+
     void Start()
     {
         continueButton.onClick.AddListener(pauseControl.TogglePause);
-        //settingsButton.onClick.AddListener();
+        settingsButton.onClick.AddListener(OpenSettings);
         goToMainButton.onClick.AddListener(GoToMainMenu);
         exitButton.onClick.AddListener(gameManager.ExitGame);
     }
@@ -31,5 +36,11 @@ public class PauseMenu : MonoBehaviour
     {
         pauseControl.TogglePause();
         gameManager.LoadMainMenu();
+    }
+
+    void OpenSettings()
+    {
+        settingsMenu.SetActive(true);
+        gameObject.SetActive(false);
     }
 }
