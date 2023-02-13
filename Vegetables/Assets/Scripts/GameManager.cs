@@ -3,19 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
 
 public class GameManager : MonoBehaviour
 {
-    
+
     [SerializeField] int playerVegetableCount = 0;
     [SerializeField] int playerScore = 0;
-    [SerializeField] TextMeshProUGUI vegetableText; 
-    [SerializeField] TextMeshProUGUI scoreText;
-    [SerializeField] float countSpeed= .01f;
-    [SerializeField] Canvas pauseMenu;
+    [SerializeField] float countSpeed = .01f;
+    [SerializeField] float levelChangeEventDelay = .1f;
+
+
+    public static event Action OnPointUpdate;
+    public static event Action OnVegetableCountUpdate;
+    public static event Action OnSceneChange;
 
     private static GameObject instance = null;
-    
+
     private void Awake()
     {
         CreateSingleton();
@@ -40,6 +44,11 @@ public class GameManager : MonoBehaviour
         return playerVegetableCount;
     }
 
+    public int GetPlayerScore()
+    {
+        return playerScore;
+    }
+
     public void RemoveVegetables(int amount)
     {
         StartCoroutine(DecrementVegetables(amount));
@@ -47,13 +56,13 @@ public class GameManager : MonoBehaviour
 
     IEnumerator DecrementVegetables(int amount)
     {
-        for(int i =0; i < amount; i++)
+        for (int i = 0; i < amount; i++)
         {
             //The player cant have a negative amount of vegetables
-            if(playerVegetableCount > 0)
+            if (playerVegetableCount > 0)
             {
                 playerVegetableCount--;
-                vegetableText.text = "Vegetables:" + playerVegetableCount.ToString();
+                OnVegetableCountUpdate!.Invoke();
             }
             yield return new WaitForSeconds(countSpeed);
         }
@@ -66,37 +75,49 @@ public class GameManager : MonoBehaviour
 
     IEnumerator IncermentVegetables(int amount)
     {
-        for(int i =0; i < amount; i++)
+        for (int i = 0; i < amount; i++)
         {
             playerVegetableCount++;
-            vegetableText.text = "Vegetables:" + playerVegetableCount.ToString();
+            OnVegetableCountUpdate!.Invoke();
             yield return new WaitForSeconds(countSpeed);
         }
     }
 
     public void AddPoints(int amount)
     {
-       StartCoroutine(IncrementPoints(amount));
+        StartCoroutine(IncrementPoints(amount));
     }
 
     IEnumerator IncrementPoints(int amount)
     {
-        for(int i =0; i < amount; i++)
+        for (int i = 0; i < amount; i++)
         {
             playerScore++;
-            scoreText.text = "Score:" + playerScore.ToString();
+            OnPointUpdate!.Invoke();
             yield return new WaitForSeconds(countSpeed);
         }
     }
-    
+
     public void LoadNextLevel()
     {
-       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        StopAllCoroutines();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        StartCoroutine(FireSceneChangeEventAfterDelay());
     }
 
     public void LoadMainMenu()
     {
+        playerScore = 0;
+        playerVegetableCount = 0;
+        StopAllCoroutines();
         SceneManager.LoadScene(0);
+        StartCoroutine(FireSceneChangeEventAfterDelay());
+    }
+
+    IEnumerator FireSceneChangeEventAfterDelay()
+    {
+        yield return new WaitForSeconds(levelChangeEventDelay);
+        OnSceneChange!.Invoke();
     }
 
     public void ExitGame()
@@ -107,5 +128,4 @@ public class GameManager : MonoBehaviour
 
         Application.Quit();
     }
-
 }
