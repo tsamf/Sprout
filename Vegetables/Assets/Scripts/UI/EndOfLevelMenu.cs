@@ -52,6 +52,7 @@ public class EndOfLevelMenu : MonoBehaviour
     private void GoToNextLevel()
     {
         Time.timeScale = timeScale;
+        isLevelOver = false;
         gameManager.LoadNextLevel();
     }
 }

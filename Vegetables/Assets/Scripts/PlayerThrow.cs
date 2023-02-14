@@ -32,6 +32,7 @@ public class PlayerThrow : MonoBehaviour
     {
         //If the game is paused don't do anything
         if (PauseControl.isPaused) { return; }
+        if (EndOfLevelMenu.isLevelOver) {return;}
         //If the player is on the ladder don't do anything
         if(playerMovement.GetIsClimbing()) {return;}
 
