@@ -70,4 +70,9 @@ public class PlayerPick : MonoBehaviour
     {
         moveInput = value.Get<Vector2>();
     }
+
+    public bool getIsPicking()
+    {
+        return isPicking;
+    }
 }

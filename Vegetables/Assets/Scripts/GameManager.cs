@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] int playerScore = 0;
     [SerializeField] float countSpeed = .01f;
     [SerializeField] float levelChangeEventDelay = .1f;
+    [SerializeField] int pointsPerVegetable = 5;
 
 
     public static event Action OnPointUpdate;
@@ -102,6 +103,13 @@ public class GameManager : MonoBehaviour
     {
         StopAllCoroutines();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        StartCoroutine(FireSceneChangeEventAfterDelay());
+    }
+
+    public void LoadFirstLevel()
+    {
+        StopAllCoroutines();
+        SceneManager.LoadScene(1);
         StartCoroutine(FireSceneChangeEventAfterDelay());
     }
 

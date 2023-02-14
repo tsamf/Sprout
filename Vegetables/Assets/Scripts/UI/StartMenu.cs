@@ -7,7 +7,6 @@ public class StartMenu : MonoBehaviour
 {
     [SerializeField] Button startButton;
     [SerializeField] Button settingsButton;
-    [SerializeField] Button creditsButton;
     [SerializeField] Button exitButton;
 
     GameManager gameManager;
@@ -22,7 +21,6 @@ public class StartMenu : MonoBehaviour
     {
         startButton.onClick.AddListener(gameManager.LoadNextLevel);
         settingsButton.onClick.AddListener(OpenSettingsMenu);
-        //creditsButton.onClick.AddListener();
         exitButton.onClick.AddListener(gameManager.ExitGame);
     }
 

@@ -24,6 +24,8 @@ public class PauseControl : MonoBehaviour
     {
         if (value.isPressed)
         {
+            //Do not level the player toggle pause once the level has ended
+            if(EndOfLevelMenu.isLevelOver){return;}
             TogglePause();
         }
     }

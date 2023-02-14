@@ -19,9 +19,9 @@ public class PlayerMovement : MonoBehaviour
     private CapsuleCollider2D myCapsuleCollider2D;
     private AudioManager audioManager;
     private GameManager gameManager;
+    private PlayerPick playerPick;
 
     private bool isClimbing = false;
-    private bool isPicking = false;
 
     void Awake()
     {
@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         myCapsuleCollider2D = GetComponent<CapsuleCollider2D>();
         audioManager = FindObjectOfType<AudioManager>();
         gameManager = FindObjectOfType<GameManager>();
+        playerPick = FindObjectOfType<PlayerPick>(); 
     }
 
     void Update()
@@ -104,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
     private void move()
     {
         //Dont let the player move if they are picking
-        if(isPicking){return;}
+        //if(playerPick.getIsPicking()){return;}
         
         myRigidbody2D.velocity = new Vector2(moveInput.x * runSpeed, myRigidbody2D.velocity.y);
 
