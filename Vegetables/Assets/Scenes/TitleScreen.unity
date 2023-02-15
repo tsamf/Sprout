@@ -876,7 +876,6 @@ MonoBehaviour:
   playerScore: 0
   countSpeed: 0.01
   levelChangeEventDelay: 0.1
-  pointsPerVegetable: 5
 --- !u!4 &1585122856
 Transform:
   m_ObjectHideFlags: 0

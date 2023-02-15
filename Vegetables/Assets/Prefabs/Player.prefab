@@ -302,5 +302,5 @@ MonoBehaviour:
   dropSpawnPointOffest: 1
   dropRangeX: 2
   dropRangeY: 2
-  droprate: 0.05
+  droprate: 0.07
   loadEndScreenDelay: 1

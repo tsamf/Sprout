@@ -37,17 +37,13 @@ public class DroppedVegetable : MonoBehaviour
             float travelDelta = travelSpeed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, basket.transform.position, travelDelta);
 
-            //Once the Vegetable reaches the basket destroy it
+            //Once the Vegetable reaches the basket  destroy it
             if(transform.position == basket.transform.position)
             {
+                audioManager.PlayVegetableTurnedInSFX();
+                gameManager.AddPoints(vegetablePoints);
                 Destroy(gameObject);
             }
         }
-    }
-
-    private void OnDestroy() {
-        //When the object is destroyed add the points to the players score total and play a collection sound
-        audioManager.PlayVegetableTurnedInSFX();
-        gameManager.AddPoints(vegetablePoints);
     }
 }

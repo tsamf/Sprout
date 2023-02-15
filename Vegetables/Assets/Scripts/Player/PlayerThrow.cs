@@ -75,7 +75,9 @@ public class PlayerThrow : MonoBehaviour
     {
         Vector3 vegetableSpawnPoint = transform.position + Vector3.up * thrownSpawnPointOffest;
         Transform weapon = Instantiate(thrownVegetablePrefab, vegetableSpawnPoint, Quaternion.identity);
-        Vector2 throwDistance = new Vector2(-transform.localScale.x * (Mathf.Abs(myRigidbody2D.velocity.x) + throwSpeed.x), myRigidbody2D.velocity.y + throwSpeed.y);
+        //Using the players speed to apply further distance to throw kind of wonky needs to be reworked.
+        //Vector2 throwDistance = new Vector2(-transform.localScale.x * (Mathf.Abs(myRigidbody2D.velocity.x) + throwSpeed.x), myRigidbody2D.velocity.y + throwSpeed.y);
+        Vector2 throwDistance = new Vector2(throwSpeed.x * -transform.localScale.x, throwSpeed.y); 
         weapon.GetComponent<Rigidbody2D>().velocity = throwDistance;
         Destroy(weapon.gameObject, destroyThrownAfterTime);
     }

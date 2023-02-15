@@ -139,6 +139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dda4a72f50a82b5458b1d3b3d4f44238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  travelSpeed: 10
-  travelDelay: 0.2
+  travelSpeed: 15
+  travelDelay: 0.1
   vegetablePoints: 5
