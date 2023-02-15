@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Vegetable : MonoBehaviour
+public class PlantedVegetable : MonoBehaviour
 {
 
     [SerializeField] VegetableSO vegetableInfo;
