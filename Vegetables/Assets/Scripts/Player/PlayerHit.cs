@@ -26,9 +26,12 @@ public class PlayerHit : MonoBehaviour
     private void Awake()
     {
         myCapsuleCollider2D = GetComponent<CapsuleCollider2D>();
-        audioManager = FindObjectOfType<AudioManager>();
         myRigidbody2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Start() {
+        audioManager = FindObjectOfType<AudioManager>();
         gameManager = FindObjectOfType<GameManager>();
     }
 

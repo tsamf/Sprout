@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PauseMenu
   - PlayerUI
+  - ThrownVegetable
   layers:
   - Default
   - TransparentFX
@@ -66,4 +67,7 @@ TagManager:
     locked: 0
   - name: Obstacles
     uniqueID: 2715198335
+    locked: 0
+  - name: UI
+    uniqueID: 490015187
     locked: 0

@@ -14,18 +14,11 @@ public class SettingsMenu : MonoBehaviour
     private GameObject startMenu;
     private AudioManager audioManager;
 
-    private void Awake()
-    {
-        audioManager = FindObjectOfType<AudioManager>();
-    }
-
     private void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         save.onClick.AddListener(SaveSettings);
-    }
 
-    private void OnEnable()
-    {
         master.value = audioManager.MasterVolume;
         music.value = audioManager.MusicVolume;
         SFX.value = audioManager.SFXVolume;

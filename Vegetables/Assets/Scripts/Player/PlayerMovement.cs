@@ -30,14 +30,31 @@ public class PlayerMovement : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         myBoxCollider2D = GetComponent<BoxCollider2D>();
         myCapsuleCollider2D = GetComponent<CapsuleCollider2D>();
+        playerPick = GetComponent<PlayerPick>();
+    }
+
+    private void OnEnable()
+    {
+        PlayerPick.OnPick += OnPick;
+    }
+
+    private void OnDisable()
+    {
+        PlayerPick.OnPick -= OnPick;
+    }
+
+    private void Start()
+    {
         audioManager = FindObjectOfType<AudioManager>();
         gameManager = FindObjectOfType<GameManager>();
-        playerPick = FindObjectOfType<PlayerPick>(); 
     }
 
     void Update()
     {
         if (PauseControl.isPaused) { return; }
+        if (EndOfLevelMenu.isLevelOver) { return; }
+        if (playerPick.getIsPicking()) { return; }
+
         move();
         flip();
         Climb();
@@ -104,9 +121,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void move()
     {
-        //Dont let the player move if they are picking
-        //if(playerPick.getIsPicking()){return;}
-        
         myRigidbody2D.velocity = new Vector2(moveInput.x * runSpeed, myRigidbody2D.velocity.y);
 
         bool playerHasHorizontalSpeed = Mathf.Abs(myRigidbody2D.velocity.x) > Mathf.Epsilon;
@@ -127,6 +141,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //If the game is paused don't do anything
         if (PauseControl.isPaused) { return; }
+        if (EndOfLevelMenu.isLevelOver) { return; }
 
         //If the player is not on the ground don't jump        
         if (!myBoxCollider2D.IsTouchingLayers(LayerMask.GetMask("Platforms"))) { return; }
@@ -142,6 +157,14 @@ public class PlayerMovement : MonoBehaviour
     private void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
+    }
+
+    //Event triggered on vegetable pick to clear the animations and reset the players velocity
+    private void OnPick()
+    {
+        myRigidbody2D.velocity = Vector2.zero;
+        myAnimator.SetBool("isJumping", false);
+        myAnimator.SetBool("isRunning", false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 23378805
-  m_SortingLayer: 5
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 1711293033, guid: 428a3da2db0918f4db057c6c524fac5b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -95,15 +95,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7079699462237245647}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f03e8a419b8d6d4fa552be339d0d5a1, type: 3}
+  m_Script: {fileID: 11500000, guid: 9407b52e29d02c043a60f25ae436d87e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   possibleVegetableSprites:
   - {fileID: 1711293033, guid: 428a3da2db0918f4db057c6c524fac5b, type: 3}
   - {fileID: -2022335215, guid: 428a3da2db0918f4db057c6c524fac5b, type: 3}
   - {fileID: -382834904, guid: 428a3da2db0918f4db057c6c524fac5b, type: 3}
-  - {fileID: 269533093, guid: 428a3da2db0918f4db057c6c524fac5b, type: 3}
-  - {fileID: 542734767, guid: 428a3da2db0918f4db057c6c524fac5b, type: 3}
+  - {fileID: -169217404, guid: 428a3da2db0918f4db057c6c524fac5b, type: 3}
+  - {fileID: 1246343953, guid: 428a3da2db0918f4db057c6c524fac5b, type: 3}
   - {fileID: -822851293, guid: 428a3da2db0918f4db057c6c524fac5b, type: 3}
 --- !u!50 &7079699462237245644
 Rigidbody2D:

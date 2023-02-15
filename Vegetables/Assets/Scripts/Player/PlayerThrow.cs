@@ -20,10 +20,15 @@ public class PlayerThrow : MonoBehaviour
 
     private bool isThrowing = false;
 
-    private void Awake() {
-        playerMovement  = GetComponent<PlayerMovement>();
+    private void Awake()
+    {
+        playerMovement = GetComponent<PlayerMovement>();
         animator = GetComponent<Animator>();
         myRigidbody2D = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
         gameManager = FindObjectOfType<GameManager>();
         audioManager = FindObjectOfType<AudioManager>();
     }
@@ -32,9 +37,9 @@ public class PlayerThrow : MonoBehaviour
     {
         //If the game is paused don't do anything
         if (PauseControl.isPaused) { return; }
-        if (EndOfLevelMenu.isLevelOver) {return;}
+        if (EndOfLevelMenu.isLevelOver) { return; }
         //If the player is on the ladder don't do anything
-        if(playerMovement.GetIsClimbing()) {return;}
+        if (playerMovement.GetIsClimbing()) { return; }
 
         if (value.isPressed && !isThrowing)
         {
@@ -46,7 +51,7 @@ public class PlayerThrow : MonoBehaviour
     {
         animator.SetTrigger("isThrowing");
         isThrowing = true;
-    
+
         if (gameManager.GetVegetableAmount() <= 0)
         {
             ThrowEmpty();
@@ -56,7 +61,7 @@ public class PlayerThrow : MonoBehaviour
             ThrowVegetable();
         }
 
-         StartCoroutine(ResetThrowState());
+        StartCoroutine(ResetThrowState());
     }
 
     private void ThrowVegetable()

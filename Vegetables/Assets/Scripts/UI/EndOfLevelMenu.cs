@@ -17,12 +17,6 @@ public class EndOfLevelMenu : MonoBehaviour
 
     public static bool isLevelOver = false;
 
-    private void Awake()
-    {
-        playerUI = GameObject.FindGameObjectWithTag("PlayerUI");
-        gameManager = FindObjectOfType<GameManager>();
-    }
-
     private void OnEnable()
     {
         PlayerDrop.onAllVegetablesDropped += LoadMenu;
@@ -37,6 +31,8 @@ public class EndOfLevelMenu : MonoBehaviour
     private void Start()
     {
         nextLevelButton.onClick.AddListener(GoToNextLevel);
+        playerUI = GameObject.FindGameObjectWithTag("PlayerUI");
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     private void LoadMenu(int amount)

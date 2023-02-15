@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class Basket : MonoBehaviour
 {
-
-    
     public delegate void OnLevelComplete(int vegetables);
     public static event OnLevelComplete onLevelComplete;
 
@@ -14,7 +12,7 @@ public class Basket : MonoBehaviour
 
     private GameManager gameManager;
 
-    private void Awake()
+    private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
     }
@@ -24,6 +22,8 @@ public class Basket : MonoBehaviour
         if (other.tag == "Player" && !isTriggered)
         {
             isTriggered = true;
+            //Sends event that level has completed with amount of vegetables 
+            //that need to be tallied for points and displayed on the end screen
             onLevelComplete!.Invoke(gameManager.GetVegetableAmount());
         }
     }

@@ -12,13 +12,11 @@ public class StartMenu : MonoBehaviour
     GameManager gameManager;
     GameObject settingsMenu;
 
-    private void Awake() {
-        gameManager = FindObjectOfType<GameManager>();  
-        settingsMenu = FindObjectOfType<SettingsMenu>(true).gameObject;
-    }
-
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();  
+        settingsMenu = FindObjectOfType<SettingsMenu>(true).gameObject;
+
         startButton.onClick.AddListener(gameManager.LoadNextLevel);
         settingsButton.onClick.AddListener(OpenSettingsMenu);
         exitButton.onClick.AddListener(gameManager.ExitGame);

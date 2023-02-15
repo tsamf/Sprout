@@ -7,13 +7,10 @@ using System;
 
 public class GameManager : MonoBehaviour
 {
-
     [SerializeField] int playerVegetableCount = 0;
     [SerializeField] int playerScore = 0;
     [SerializeField] float countSpeed = .01f;
     [SerializeField] float levelChangeEventDelay = .1f;
-    [SerializeField] int pointsPerVegetable = 5;
-
 
     public static event Action OnPointUpdate;
     public static event Action OnVegetableCountUpdate;
@@ -21,9 +18,22 @@ public class GameManager : MonoBehaviour
 
     private static GameObject instance = null;
 
+    private int vegetablesTurnedIn = 0;
+    private int enemiesKilled = 0;
+
     private void Awake()
     {
         CreateSingleton();
+    }
+
+    private void OnEnable()
+    {
+        Basket.onLevelComplete += turnInVegetables;
+    }
+
+    private void OnDisable()
+    {
+        Basket.onLevelComplete -= turnInVegetables;
     }
 
     private void CreateSingleton()
@@ -38,16 +48,6 @@ public class GameManager : MonoBehaviour
             gameObject.SetActive(false);
             Destroy(gameObject);
         }
-    }
-
-    public int GetVegetableAmount()
-    {
-        return playerVegetableCount;
-    }
-
-    public int GetPlayerScore()
-    {
-        return playerScore;
     }
 
     public void RemoveVegetables(int amount)
@@ -89,6 +89,11 @@ public class GameManager : MonoBehaviour
         StartCoroutine(IncrementPoints(amount));
     }
 
+    public void IncrementEnemiesKilled()
+    {
+        enemiesKilled++;
+    }
+
     IEnumerator IncrementPoints(int amount)
     {
         for (int i = 0; i < amount; i++)
@@ -108,6 +113,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadFirstLevel()
     {
+        ResetVariables();
         StopAllCoroutines();
         SceneManager.LoadScene(1);
         StartCoroutine(FireSceneChangeEventAfterDelay());
@@ -115,13 +121,21 @@ public class GameManager : MonoBehaviour
 
     public void LoadMainMenu()
     {
-        playerScore = 0;
-        playerVegetableCount = 0;
+        ResetVariables();
         StopAllCoroutines();
         SceneManager.LoadScene(0);
         StartCoroutine(FireSceneChangeEventAfterDelay());
     }
 
+    public void ResetVariables()
+    {
+        vegetablesTurnedIn = 0;
+        enemiesKilled = 0;
+        playerScore = 0;
+        playerVegetableCount = 0;
+    }
+
+    //Allows other persistent scripts to make changes based on level changing event 
     IEnumerator FireSceneChangeEventAfterDelay()
     {
         yield return new WaitForSeconds(levelChangeEventDelay);
@@ -130,10 +144,35 @@ public class GameManager : MonoBehaviour
 
     public void ExitGame()
     {
-        #if UNITY_EDITOR
-            Debug.Log("Exit Game was pushed.");
-        #endif
+#if UNITY_EDITOR
+        Debug.Log("Exit Game was pushed.");
+#endif
 
         Application.Quit();
+    }
+
+    private void turnInVegetables(int vegetables)
+    {
+        vegetablesTurnedIn += vegetables;
+    }
+
+    public int GetVegetableAmount()
+    {
+        return playerVegetableCount;
+    }
+
+    public int GetPlayerScore()
+    {
+        return playerScore;
+    }
+
+     public int GetVegetablesTrunedIn()
+    {
+        return vegetablesTurnedIn;
+    }
+
+    public int GetEnemiesKilled()
+    {
+        return enemiesKilled;
     }
 }

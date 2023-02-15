@@ -19,17 +19,22 @@ public class Slime : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private bool isDying = false;
     private Color originalColor;
+    private BoxCollider2D boxCollider2D;
+    private CircleCollider2D circleCollider2D;
 
     void Awake()
     {
+        boxCollider2D = GetComponent<BoxCollider2D>();
+        circleCollider2D = GetComponent<CircleCollider2D>();
         myRigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
+    }
 
+    private void Start() {
         gameManager = FindObjectOfType<GameManager>();
         audioManager = FindObjectOfType<AudioManager>();
-
     }
 
     // Update is called once per frame
@@ -43,21 +48,28 @@ public class Slime : MonoBehaviour
 
         if (other.gameObject.layer == LayerMask.NameToLayer("ThrowVegetable"))
         {
+            //If the slime is not in a dying state process the hit
             if (!isDying)
             {
+                //if hitpoints higher than 1 decrement and play hit sound
                 if (hitPoints > 1)
                 {
                     hitPoints--;
                     audioManager.PlaySlimeHitSFX();
                     StartCoroutine(Hit());
                 }
+                //Slime has reached 0 hit points start death process
                 else
                 {
                     isDying = true;
                     movementSpeed = 0f;
                     gameManager.AddPoints(points);
+                    gameManager.IncrementEnemiesKilled();
                     audioManager.PlaySlimeDeathSFX();
                     animator.SetTrigger("isDead");
+                    //Prevents player from taking damage while death animation is playing
+                    boxCollider2D.enabled = false;
+                    circleCollider2D.enabled= false;
                     StartCoroutine(Die());
                 }
             }
@@ -78,6 +90,7 @@ public class Slime : MonoBehaviour
         spriteRenderer.color = originalColor;
     }
 
+    //When the enemy collider leaves the platforms plane it turns around and pats the other direction
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Platforms"))

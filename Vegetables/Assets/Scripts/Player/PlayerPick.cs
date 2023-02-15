@@ -18,6 +18,12 @@ public class PlayerPick : MonoBehaviour
 
     public static event Action OnPick;
 
+    void Awake()
+    {   
+        capsuleCollider2D = GetComponent<CapsuleCollider2D>();
+        animator = GetComponent<Animator>();
+    }
+
     private void OnEnable()
     {
         OnPick += PickVegetable;
@@ -28,10 +34,7 @@ public class PlayerPick : MonoBehaviour
         OnPick -= PickVegetable;
     }
 
-    void Awake()
-    {   
-        capsuleCollider2D = GetComponent<CapsuleCollider2D>();
-        animator = GetComponent<Animator>();
+    private void Start() {
         audioManager = FindObjectOfType<AudioManager>();
     }
 
@@ -40,6 +43,7 @@ public class PlayerPick : MonoBehaviour
         CheckForPick();
     }
 
+    //If the player is overlapping a vegetable and pushes down a pick event is triggered
     private void CheckForPick()
     {
         if (capsuleCollider2D.IsTouchingLayers(LayerMask.GetMask("PickVegetable")))

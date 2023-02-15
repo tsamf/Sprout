@@ -17,17 +17,17 @@ public class PlayerDrop : MonoBehaviour
     public delegate void OnAllVegetablesDropped(int vegetables);
     public static event OnAllVegetablesDropped onAllVegetablesDropped;
 
-    private void Awake()
-    {
-        gameManager = FindObjectOfType<GameManager>();
-    }
-
     private void OnEnable() {
         Basket.onLevelComplete += StartVegetableDrop;
     }
 
     private void OnDisable() {
         Basket.onLevelComplete -= StartVegetableDrop;
+    }
+
+    private void Start()
+    {
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     private void StartVegetableDrop(int amount)

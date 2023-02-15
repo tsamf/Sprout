@@ -876,6 +876,7 @@ MonoBehaviour:
   playerScore: 0
   countSpeed: 0.01
   levelChangeEventDelay: 0.1
+  pointsPerVegetable: 5
 --- !u!4 &1585122856
 Transform:
   m_ObjectHideFlags: 0
@@ -1035,7 +1036,7 @@ PrefabInstance:
     - target: {fileID: 32231641785216434, guid: 64924fc2becf37a45a3aa8b148e884d3, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: cad8f5d58755bf441a7a312d6de9c6b9, type: 3}
+      objectReference: {fileID: 8300000, guid: c6be9932815cce848afa53d2300a425c, type: 3}
     - target: {fileID: 32231641785216444, guid: 64924fc2becf37a45a3aa8b148e884d3, type: 3}
       propertyPath: audioSource
       value: 

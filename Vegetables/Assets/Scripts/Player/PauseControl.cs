@@ -14,7 +14,7 @@ public class PauseControl : MonoBehaviour
     public static bool isPaused = false;
 
    
-    private void Awake()
+    private void Start()
     {
         pauseMenu = FindObjectOfType<PauseMenu>(true).gameObject;
         settingsMenu = FindObjectOfType<SettingsMenu>(true).gameObject;

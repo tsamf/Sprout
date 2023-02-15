@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -41,8 +41,18 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip slimeDeathSFX;
     [SerializeField][Range(0, 1)] float slimeDeathVolume = 1f;
 
+    [Header("Vegetable Turn In")]
+    [SerializeField] AudioClip vegetableTurnedInSFX;
+    [SerializeField][Range(0, 1)] float vegetableTurnedInVolume = 1f;
+
 
     private static GameObject instance = null;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+        CreateSingleton();
+    }
 
     private void OnEnable()
     {
@@ -52,12 +62,6 @@ public class AudioManager : MonoBehaviour
     private void OnDisable()
     {
         GameManager.OnSceneChange -= UpdateThemeOnSceneChange;
-    }
-
-    private void Awake()
-    {
-        audioSource = GetComponent<AudioSource>();
-        CreateSingleton();
     }
 
     private void CreateSingleton()
@@ -112,6 +116,11 @@ public class AudioManager : MonoBehaviour
     public void PlaySlimeDeathSFX()
     {
         PlaySFXAtPoint(slimeDeathSFX, slimeDeathVolume);
+    }
+
+     public void PlayVegetableTurnedInSFX()
+    {
+        PlaySFXAtPoint(vegetableTurnedInSFX, vegetableTurnedInVolume);
     }
 
     void PlaySFXAtPoint(AudioClip clip, float clipVolume)

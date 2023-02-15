@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 32231641785216447}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -45,13 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af4f2bdec6df30242930fdab29775712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterVolume: 1
-  musicVolume: 1
-  SFXVolume: 1
+  masterVolume: 0.694
+  musicVolume: 0.659
+  sFXVolume: 0.655
   audioSource: {fileID: 0}
-  mainMenuTheme: {fileID: 8300000, guid: cad8f5d58755bf441a7a312d6de9c6b9, type: 3}
+  mainMenuTheme: {fileID: 8300000, guid: c6be9932815cce848afa53d2300a425c, type: 3}
   mainMenuThemeVolume: 1
-  levelTheme: {fileID: 8300000, guid: 43905a7ef82d9ef49842202e2dd3a257, type: 3}
+  levelTheme: {fileID: 8300000, guid: b059d4946aab2d44c98a95fdddfa1e86, type: 3}
   levelThemeVolume: 1
   playerJumpSFX: {fileID: 8300000, guid: beb7598c0996f9845b7308c92e8014c4, type: 3}
   playerJumpVolume: 1
@@ -67,6 +67,8 @@ MonoBehaviour:
   slimeHitVolume: 1
   slimeDeathSFX: {fileID: 8300000, guid: c48f128dd130a754bb105a4f3ea79ee7, type: 3}
   slimeDeathVolume: 1
+  vegetableTurnedInSFX: {fileID: 8300000, guid: e6cf604ea0585b842abf5164cf7efe53, type: 3}
+  vegetableTurnedInVolume: 1
 --- !u!82 &32231641785216434
 AudioSource:
   m_ObjectHideFlags: 0
