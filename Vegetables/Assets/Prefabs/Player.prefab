@@ -282,7 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrownVegetablePrefab: {fileID: 7079699462237245632, guid: d42d9ea34ce85014199b42f0db40f827, type: 3}
-  throwSpeed: {x: 3, y: 4}
+  throwSpeed: {x: 2, y: 3}
   thrownSpawnPointOffest: 1
   destroyThrownAfterTime: 2
   throwCooldownTimer: 0.1
